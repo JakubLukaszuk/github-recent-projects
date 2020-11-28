@@ -39,13 +39,12 @@ const reducer = (state = initialState, action) => {
             {
                 const repoToModifyIndex = newRepos.findIndex(repo => repo.id === action.repoID);
                 const updatedCommits = [...newRepos[repoToModifyIndex].commits, ...action.commits];
-                console.log(newRepos[repoToModifyIndex]);
                 newRepos[repoToModifyIndex].commits = updatedCommits;
             }
             return{
                 ...state,
                 repos: newRepos,
-                reposLoading: false,
+                commitsLoading: false,
                 error: null
             };
         default:

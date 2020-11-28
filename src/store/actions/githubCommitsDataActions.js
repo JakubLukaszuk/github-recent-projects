@@ -1,12 +1,11 @@
 import * as actionTypes from './actionsTypes';
 import {getCommitsAsync} from '../../data/providers/githubDataProvider';
 
-export const fetchCommitsSucces = (repoID, fetchedCommitsAmout,commits) =>{
+export const fetchCommitsSucces = (repoID,commits) =>{
     return{
         type: actionTypes.FETCH_COMMITS_SUCCESS,
         repoID: repoID,
         commits: commits,
-        fetchedCommitsAmout: fetchedCommitsAmout,
     }
 }
 
@@ -34,7 +33,7 @@ export const fetchCommits = (repoID, from, to, IsDesc = true) =>{
                     url: response[key].html_url,
                 });
             }
-            dispatch(fetchCommitsSucces(repoID, fetchedCommits.length ,fetchedCommits))
+            dispatch(fetchCommitsSucces(repoID, fetchedCommits))
         })
         .catch(error =>{
             dispatch(fetchCommitsFail());
