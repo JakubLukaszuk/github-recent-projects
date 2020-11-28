@@ -28,7 +28,8 @@ export const fetchRepos = (UserNameOrID, from, to, IsDesc = true) =>{
                 fetchedRepos.push({
                     id: response[key].id,
                     url: response[key].html_url,
-                    name: response[key].name
+                    name: response[key].name,
+                    commits: [],
                 });
             }
             dispatch(fetchReposSucces(fetchedRepos))

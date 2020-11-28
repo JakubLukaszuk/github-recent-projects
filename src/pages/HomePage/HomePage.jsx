@@ -4,16 +4,24 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
 const HomePage = props =>{
-    const {onFetchRepos, repos} = props;
+    const {onFetchRepos, onFetchCommits, repos} = props;
     useEffect(() => {
         onFetchRepos(41912745,0,5,true);
+        onFetchCommits(316703855,0,5,true);
     }, [])
+
+    useEffect(() => {
+        console.log(repos);
+    }, [repos])
+
+
         return (
             <div>
                 HP
                 <ul>
-                    {repos.map((repo) => (<li>{repo.name}</li>))}
+                    {repos.map((repo) => (<li>{repo.id}</li>))}
                 </ul>
+
             </div>
         )
 }
@@ -24,7 +32,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchRepos: (userNameOrId, from, to, isSortDesc) => dispatch(actions.fetchRepos(userNameOrId, from, to, isSortDesc))
+        onFetchRepos: (userNameOrId, from, to, isSortDesc) => dispatch(actions.fetchRepos(userNameOrId, from, to, isSortDesc)),
+        onFetchCommits: (repoId, from, to, isSortDesc) => dispatch(actions.fetchCommits(repoId, from, to, isSortDesc)),
     }
 }
 
