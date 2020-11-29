@@ -5,12 +5,14 @@ import InputPanel from '../../components/InputPanel/InputPanel';
 import RepoItems from '../../components/RepoItems/RepoItems';
 import * as actions from '../../store/actions';
 
+import './HomePage.sass'
+
 
 const HomePage = (props) => {
     const { onFetchRepos } = props;
 
     return (
-        <section>
+        <section className='homePage'>
             <InputPanel submitFunc = {onFetchRepos}/>
             <RepoItems/>
         </section>

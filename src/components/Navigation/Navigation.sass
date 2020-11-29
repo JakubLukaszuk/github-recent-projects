@@ -1,0 +1,17 @@
+.navigation
+    width: 100%
+    position: fixed
+    top: 0
+    left: 0
+    border: none
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 0 20px
+    z-index: 90
+    font-weight: bold
+    &__itemWrapper
+        width: 100%
+        &--desktopOnly
+            @media (max-width: 499px)
+                display: none

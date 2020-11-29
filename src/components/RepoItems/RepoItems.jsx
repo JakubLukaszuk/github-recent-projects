@@ -10,7 +10,6 @@ const RepoItems = props =>{
 
     return (
         <div>
-            HP
             {reposLoading? 'Loading...':
             <ul>
                 {repos.map((repo, i) => (<RepoItem key={i} repoData = {repo} fetchCommits={onFetchCommits} commitsLoading= {commitsLoading}/>))}

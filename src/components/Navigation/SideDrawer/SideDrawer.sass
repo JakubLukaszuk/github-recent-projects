@@ -1,0 +1,19 @@
+.sideDrawer
+    position: fixed
+    width: 60%
+    max-width: 70%
+    height: 100%
+    left: 0
+    top: 0
+    z-index: 200
+    background-color: grey
+    border-right: 1px solid white
+    padding: 1% 0.5%
+    transition: transform 0.3s ease-out
+    @media (min-width: 500px)
+        display: none
+    &__open
+        transform: translateX(0)
+    &__close
+        transform: translateX(-100%)
+
