@@ -1,6 +1,8 @@
 import * as actionTypes from './actionsTypes';
 import {getCommitsAsync} from '../../data/providers/githubDataProvider';
-import {prepearDateFromResponse} from '../../utils/date';
+import {prepearDateFromResponse} from '../../utils/date'
+import {getErrorMessage} from '../../utils/error';
+
 
 export const fetchCommitsSucces = (repoID,commits) =>{
     return{
@@ -10,9 +12,10 @@ export const fetchCommitsSucces = (repoID,commits) =>{
     }
 }
 
-export const fetchCommitsFail = () => {
+export const fetchCommitsFail = (errorMessage) => {
     return{
         type: actionTypes.FETCH_COMMITS_FAIL,
+        error: errorMessage,
     }
 }
 
@@ -38,7 +41,7 @@ export const fetchCommits = (repoID, from, to, IsDesc = true) =>{
             dispatch(fetchCommitsSucces(repoID, fetchedCommits))
         })
         .catch(error =>{
-            dispatch(fetchCommitsFail());
+            dispatch(fetchCommitsFail(getErrorMessage(error)));
         });
     }
 }

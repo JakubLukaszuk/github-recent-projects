@@ -10,7 +10,10 @@ function InputPanel(props) {
       };
 
       const handleSubmit = event => {
-        submitFunc(inputValue)
+          if(inputValue!= null && inputValue.length > 0)
+          {
+            submitFunc(inputValue)
+          }
         event.preventDefault();
       };
 

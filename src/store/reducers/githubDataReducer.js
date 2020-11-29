@@ -20,17 +20,18 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 repos: action.repos,
                 reposLoading: false,
-                error: null
+                error: null,
             };
         case actionTypes.FETCH_REPOS_FAIL:
             return{
                 ...state,
                 reposLoading: false,
+                error: action.error,
             }
         case actionTypes.GITHUB_DATA_CLEANUP:
             return{
                 ...state,
-                repos: null
+                repos: null,
             };
         case actionTypes.FETCH_COMMITS_START:
             return{
@@ -56,6 +57,7 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 commitsLoading: false,
+                error: action.error,
             }
         default:
             return state;

@@ -5,7 +5,7 @@ import Home from './pages/HomePage/HomePage';
 import NotFound from './pages/NotFoundPage/NotFoundPage';
 import Assumptions from './pages/AssumptionsPage/AssumptionsPage';
 import MainLayout from './layouts/MainLayout/MainLayout';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

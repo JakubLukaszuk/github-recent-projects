@@ -2,6 +2,7 @@ import * as actionTypes from './actionsTypes';
 import {getReposAsync} from '../../data/providers/githubDataProvider';
 import {AMOUT_REPOS_TO_FETCH} from '../../constants/apiValues';
 import {prepearDateFromResponse} from '../../utils/date';
+import {getErrorMessage} from '../../utils/error';
 
 export const fetchReposSucces = (repos) =>{
     return{
@@ -10,9 +11,10 @@ export const fetchReposSucces = (repos) =>{
     }
 }
 
-export const fetchReposFail = () => {
+export const fetchReposFail = (errorMessage) => {
     return{
         type: actionTypes.FETCH_REPOS_FAIL,
+        error: errorMessage
     }
 }
 
@@ -47,7 +49,7 @@ export const fetchRepos = (UserNameOrID, from, to, IsDesc = true) =>{
             dispatch(fetchReposSucces(fetchedRepos))
         })
         .catch(error =>{
-            dispatch(fetchReposFail());
+            dispatch(fetchReposFail(getErrorMessage(error)));
         });
     }
 }
