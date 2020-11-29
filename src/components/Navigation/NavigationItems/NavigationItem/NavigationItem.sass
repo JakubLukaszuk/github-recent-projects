@@ -3,8 +3,9 @@
     margin: 2px 0 2px 0
     @media (max-width: 499px)
         width: 95%
-    &__active
-        border: none
+    &__text
+        &--active
+            color: #7f8ff4
     a
         text-decoration: none
         padding: 14px 26px
@@ -12,4 +13,4 @@
         color: black
         border-radius: 4px
         &:hover
-            color: red
+            color: darken(#7f8ff4, 10%)

@@ -6,7 +6,7 @@ import './NavigationItems.sass'
 const NavigationItems = () => (
     <ul className = {'navigationItems'}>
         <NavItem link = {ROUTES.HOME} exact>Home</NavItem>
-        <NavItem link = {ROUTES.ASSUMPTIONS}>Assumptions</NavItem>
+        <NavItem link = {ROUTES.ASSUMPTIONS}>Assumptions and Author</NavItem>
     </ul>
 );
 
