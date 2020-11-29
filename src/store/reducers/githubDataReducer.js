@@ -22,6 +22,11 @@ const reducer = (state = initialState, action) => {
                 reposLoading: false,
                 error: null
             };
+        case actionTypes.FETCH_REPOS_FAIL:
+            return{
+                ...state,
+                reposLoading: false,
+            }
         case actionTypes.GITHUB_DATA_CLEANUP:
             return{
                 ...state,
@@ -32,7 +37,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 commitsLoading: true,
                 error: null,
-            };
+            }
         case actionTypes.FETCH_COMMITS_SUCCESS:
             const newRepos = state.repos;
             if(action.repoID != null)
@@ -47,6 +52,11 @@ const reducer = (state = initialState, action) => {
                 commitsLoading: false,
                 error: null
             };
+        case actionTypes.FETCH_COMMITS_FAIL:
+            return{
+                ...state,
+                commitsLoading: false,
+            }
         default:
             return state;
     }

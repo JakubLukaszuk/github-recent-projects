@@ -1,13 +1,28 @@
-import React from 'react'
-import RepoItems from '../../components/RepoItems/RepoItems';
+import React from 'react';
+import { connect } from 'react-redux';
 
-const HomePage = () => {
+import InputPanel from '../../components/InputPanel/InputPanel';
+import RepoItems from '../../components/RepoItems/RepoItems';
+import * as actions from '../../store/actions';
+
+
+const HomePage = (props) => {
+    const { onFetchRepos } = props;
+
     return (
-        <div>
+        <section>
+            <InputPanel submitFunc = {onFetchRepos}/>
             <RepoItems/>
-        </div>
+        </section>
     )
 }
 
-export default HomePage
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchRepos: (userNameOrId) => dispatch(actions.fetchFiveFirstRepos(userNameOrId)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(HomePage);
+
 

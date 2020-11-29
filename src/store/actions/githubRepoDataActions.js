@@ -1,5 +1,7 @@
 import * as actionTypes from './actionsTypes';
 import {getReposAsync} from '../../data/providers/githubDataProvider';
+import {AMOUT_REPOS_TO_FETCH} from '../../constants/apiValues';
+
 export const fetchReposSucces = (repos) =>{
     return{
         type: actionTypes.FETCH_REPOS_SUCCESS,
@@ -18,6 +20,13 @@ export const fetchReposStart = () => {
         type: actionTypes.FETCH_REPOS_START
     }
 }
+
+export const fetchFiveFirstRepos = (UserNameOrId) => {
+    return dispatch => {
+        dispatch(fetchRepos(UserNameOrId, 0, AMOUT_REPOS_TO_FETCH));
+    }
+}
+
 export const fetchRepos = (UserNameOrID, from, to, IsDesc = true) =>{
     return dispatch => {
         dispatch(fetchReposStart());

@@ -5,10 +5,8 @@ import * as actions from '../../store/actions';
 import RepoItem from './RepoItem/RepoItem';
 
 const RepoItems = props =>{
-    const {onFetchRepos, onFetchCommits, repos, commitsLoading, reposLoading} = props;
-    useEffect(() => {
-        onFetchRepos(41912745,0,5,true);
-    }, [])
+    const { onFetchCommits, repos, commitsLoading, reposLoading} = props;
+
 
     return (
         <div>
@@ -29,7 +27,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchRepos: (userNameOrId, from, to, isSortDesc) => dispatch(actions.fetchRepos(userNameOrId, from, to, isSortDesc)),
         onFetchCommits: (repoId, from, to, isSortDesc) => dispatch(actions.fetchCommits(repoId, from, to, isSortDesc)),
     }
 }
