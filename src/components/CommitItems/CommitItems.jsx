@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import CommitItem from './CommitItem/CommitItem';
 import {AMOUT_COMMITS_TO_FETCH} from '../../constants/apiValues';
+import {isOdd} from '../../utils/math';
+import './CommitItems.sass'
+
 
 const CommitItems = (props) => {
     const {commits, fetchCommits, repoId, commitsLoading} = props;
@@ -13,16 +16,12 @@ const CommitItems = (props) => {
         setIsBttonInitial(false);
     }
 
-    useEffect(() => {
-        console.log(props);
-    }, [isBttonInitial])
-
     return (
-        <div>
-            <ul>
-                {commits.map((commit, i)=> <CommitItem key={i} url = {commit.url}></CommitItem>)}
+        <div className = "CommitItems">
+            <ul className = "CommitItems__list">
+                {commits.map((commit, i)=> <CommitItem key={i} url = {commit.url} authorName = {commit.authorName} date = {commit.date} isOdd = {isOdd(i)}></CommitItem>)}
             </ul>
-        {commitsLoading? <span>Loading...</span> :  <button onClick={clickBownloadButton}>{isBttonInitial ? "Download": "Download mode"}</button>}
+        {commitsLoading? <span>Loading...</span> : <button onClick={clickBownloadButton}>{isBttonInitial ? "Download": "Download mode"}</button>}
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import * as actionTypes from './actionsTypes';
 import {getReposAsync} from '../../data/providers/githubDataProvider';
 import {AMOUT_REPOS_TO_FETCH} from '../../constants/apiValues';
+import {prepearDateFromResponse} from '../../utils/date';
 
 export const fetchReposSucces = (repos) =>{
     return{
@@ -34,10 +35,12 @@ export const fetchRepos = (UserNameOrID, from, to, IsDesc = true) =>{
         .then(response => {
             const fetchedRepos = [];
             for(let key in response){
+                const lastUpdateDate = prepearDateFromResponse(response[key].updated_at)
                 fetchedRepos.push({
                     id: response[key].id,
                     url: response[key].html_url,
                     name: response[key].name,
+                    lastUpdateDate: lastUpdateDate,
                     commits: [],
                 });
             }

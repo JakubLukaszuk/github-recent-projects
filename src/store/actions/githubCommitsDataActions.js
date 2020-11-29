@@ -1,5 +1,6 @@
 import * as actionTypes from './actionsTypes';
 import {getCommitsAsync} from '../../data/providers/githubDataProvider';
+import {prepearDateFromResponse} from '../../utils/date';
 
 export const fetchCommitsSucces = (repoID,commits) =>{
     return{
@@ -27,9 +28,10 @@ export const fetchCommits = (repoID, from, to, IsDesc = true) =>{
         .then(response => {
             const fetchedCommits = [];
             for(let key in response){
+                const commitDate = prepearDateFromResponse(response[key].commit.author.date)
                 fetchedCommits.push({
                     authorName: response[key].commit.author.name,
-                    date: response[key].commit.author.date,
+                    date: commitDate,
                     url: response[key].html_url,
                 });
             }

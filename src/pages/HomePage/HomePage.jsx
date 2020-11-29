@@ -13,6 +13,7 @@ const HomePage = (props) => {
 
     return (
         <section className='homePage'>
+            <h2>Check 5 Leastest Github Projects</h2>
             <InputPanel submitFunc = {onFetchRepos}/>
             <RepoItems/>
         </section>

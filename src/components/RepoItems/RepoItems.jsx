@@ -2,19 +2,21 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 
 import * as actions from '../../store/actions';
+import SpinnerLoader from '../UI/SpinnerLoader/SpinnerLoader';
 import RepoItem from './RepoItem/RepoItem';
+import {isOdd} from '../../utils/math';
+import './RepoItems.sass'
 
 const RepoItems = props =>{
     const { onFetchCommits, repos, commitsLoading, reposLoading} = props;
 
-
     return (
-        <div>
-            {reposLoading? 'Loading...':
-            <ul>
-                {repos.map((repo, i) => (<RepoItem key={i} repoData = {repo} fetchCommits={onFetchCommits} commitsLoading= {commitsLoading}/>))}
+        <React.Fragment>
+            {reposLoading? <SpinnerLoader/>:
+            <ul className = "RepoItems">
+                {repos.map((repo, i) => (<RepoItem key={i} repoData = {repo} fetchCommits={onFetchCommits} commitsLoading= {commitsLoading} isOdd={isOdd(i)} />))}
             </ul>}
-        </div>
+        </React.Fragment>
         )
 }
 
