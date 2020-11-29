@@ -15,15 +15,9 @@ function InputPanel(props) {
       };
 
     return (
-
-	// 	<form class="form">
-    //     <input type="email" class="form__field" placeholder="Your E-Mail Address" />
-    //     <button type="button" class="btn btn--primary btn--inside uppercase">Send</button>
-    // </form>
-
         <form className="InputPanelForm" onSubmit = {handleSubmit}>
             <input className="InputPanelForm__field" type="text" placeholder="GitHub user Id" onChange={onChangeHandler}/>
-            <button className="btn btn--primary btn--inside uppercase" type="submit">Serch</button>
+            <button className="InputPanelForm__btn InputPanelForm__btn--primary InputPanelForm__btn--inside" type="submit">Serch</button>
         </form>
     )
 }

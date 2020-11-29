@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Link from '../../UI/Link/Link';
+
 import './CommitItem.sass'
 
 function CommitItem(props) {
@@ -8,13 +10,13 @@ function CommitItem(props) {
         <li className = {isOdd ? "commitItem commitItem--odd" : "commitItem"}>
             <ul className= "commitItem__propertyList">
                 <li className = "commitItem__propertyList__item">
-                    author: {authorName}
+                    <a className = "bold">author:</a> {authorName}
                 </li>
-                <li className = "commitItem__propertyList__item--odd">
-                    commit date: {date}
+                <li className = "commitItem__propertyList__item commitItem__propertyList__item--odd">
+                    <a className = "bold">commit date:</a> {date}
                 </li>
                 <li className = "commitItem__propertyList__item">
-                    <a href={url}>Go to commit</a>
+                    <Link url = {url}>Go to commit&gt;&gt;</Link>
                 </li>
             </ul>
         </li>

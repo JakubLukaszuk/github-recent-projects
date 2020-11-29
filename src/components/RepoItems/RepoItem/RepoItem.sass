@@ -1,11 +1,22 @@
-.RepoItem
+.repoItem
     background: white
     padding: 10px
+    border: 2px solid black
+    margin-bottom: 5px
+    border-radius: 2px
     &--odd
-        background: #e3f1ef
+        background: #e4f6ff
     &__list
         padding: 0
         &__listItem
             padding-bottom: 5px
             &--odd
-                background: #c3faf1
+                background: #c3d9fa
+            &--title
+                font-weight: bold
+                font-size: 1.2em
+                padding: 15px
+            &--link
+                &:hover
+                    cursor: pointer
+
